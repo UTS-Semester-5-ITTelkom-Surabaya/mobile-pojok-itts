@@ -57,9 +57,8 @@ const styles = StyleSheet.create({
   absoluteImage: {
     position: 'absolute',
     width: '40%',
-    top: 30,
+    top: 48,
     alignSelf: 'center',
-    zIndex: 1, // Add this line
     objectFit: 'contain',
   },
 });
