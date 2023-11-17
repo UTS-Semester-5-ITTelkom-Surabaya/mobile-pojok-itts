@@ -11,24 +11,26 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
   },
-  image: {
-    width: '100%', // Take the entire horizontal width
-    height: 200, // Set a fixed or dynamic height as needed
-    resizeMode: 'cover', // Adjust the resizeMode as needed (cover, contain, stretch, etc.)
-  },
-  title: {
-    fontFamily: 'Charter-Bold',
-    fontSize: 24,
-    textAlign: 'justify',
-  },
-  date: {
-    fontFamily: 'Charter-Bold',
-    textAlign: 'right',
-  },
-  content: {
-    fontFamily: 'Charter-Regular',
-    fontSize: 16,
-    textAlign: 'justify',
+  article: {
+    image: {
+      width: '100%',
+      height: 200,
+      resizeMode: 'cover',
+    },
+    title: {
+      fontFamily: 'Charter-Bold',
+      fontSize: 24,
+      textAlign: 'justify',
+    },
+    date: {
+      fontFamily: 'Charter-Bold',
+      textAlign: 'right',
+    },
+    content: {
+      fontFamily: 'Charter-Regular',
+      fontSize: 16,
+      textAlign: 'justify',
+    },
   },
 });
 
@@ -40,20 +42,20 @@ export default function ArticleDetailScreen() {
   return (
     <ScrollView style={styles.screenContainer}>
       <Box style={{ paddingVertical: 24 }}>
-        <Text style={styles.title}>{article.title}</Text>
+        <Text style={styles.article.title}>{article.title}</Text>
         <Box style={{ height: 24 }} />
         <Image
           source={article.image}
           alt={article.title}
-          style={styles.image}
+          style={styles.article.image}
           role="article"
           resizeMode="cover"
           borderRadius={24}
         />
         <Box style={{ height: 12 }} />
-        <Text style={styles.date}>{article.date}</Text>
+        <Text style={styles.article.date}>{article.date}</Text>
         <Box style={{ height: 12 }} />
-        <Text style={styles.content}>{article.content}</Text>
+        <Text style={styles.article.content}>{article.content}</Text>
         <Box style={{ height: 24 }} />
         <ActionButton
           onPress={() => {
