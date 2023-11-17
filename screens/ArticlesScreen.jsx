@@ -15,13 +15,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch',
   },
-  titleText: {
-    fontFamily: 'Charter-Bold',
-    fontSize: 32,
-    lineHeight: 32,
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-  },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
