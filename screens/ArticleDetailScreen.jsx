@@ -5,6 +5,7 @@ import { Text, Image, Box, ScrollView } from '@gluestack-ui/themed';
 import { useRoute } from '@react-navigation/native';
 
 import ActionButton from '../components/ActionButton';
+import SizedBox from '../components/SizedBox';
 
 const styles = StyleSheet.create({
   screenContainer: {
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
       width: '100%',
       height: 200,
       resizeMode: 'cover',
+      borderRadius: 12,
     },
     title: {
       fontFamily: 'Charter-Bold',
@@ -43,20 +45,19 @@ export default function ArticleDetailScreen() {
     <ScrollView style={styles.screenContainer}>
       <Box style={{ paddingVertical: 24 }}>
         <Text style={styles.article.title}>{article.title}</Text>
-        <Box style={{ height: 24 }} />
+        {/* <Box style={{ height: 24 }} /> */}
+        <SizedBox height={24} />
         <Image
           source={article.image}
           alt={article.title}
           style={styles.article.image}
           role="article"
-          resizeMode="cover"
-          borderRadius={24}
         />
-        <Box style={{ height: 12 }} />
+        <SizedBox height={12} />
         <Text style={styles.article.date}>{article.date}</Text>
-        <Box style={{ height: 12 }} />
+        <SizedBox height={12} />
         <Text style={styles.article.content}>{article.content}</Text>
-        <Box style={{ height: 24 }} />
+        <SizedBox height={24} />
         <ActionButton
           onPress={() => {
             Linking.canOpenURL(article.link).then((supported) => {
