@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-newline */
 import { Text, Box, Image, Pressable } from '@gluestack-ui/themed';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import React from 'react';
