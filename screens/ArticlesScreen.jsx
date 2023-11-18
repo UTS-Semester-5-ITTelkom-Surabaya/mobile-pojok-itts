@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable object-curly-newline */
 import { Box } from '@gluestack-ui/themed';
@@ -30,7 +31,6 @@ export default function ArticlesScreen() {
   const getArticles = async () => {
     try {
       const response = await fetch(
-        // eslint-disable-next-line comma-dangle
         'https://raw.githubusercontent.com/dauditts/pm-static-api/main/articles.json'
       );
       const json = await response.json();
@@ -38,7 +38,6 @@ export default function ArticlesScreen() {
     } catch (error) {
       Alert.alert(
         'Error',
-        // eslint-disable-next-line comma-dangle
         'There was an error fetching articles. Please try again later.'
       );
     } finally {
