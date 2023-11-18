@@ -7,6 +7,8 @@
 | URL Github  | https://github.com/UTS-Semester-5-ITTelkom-Surabaya/mobile-pojok-itts |
 | URL Youtube | https://youtu.be/3xxllwLu2LY                                          |
 
+Catatan: Laporan dapat diakses di [LAPORAN.pdf](./LAPORAN.pdf)
+
 ## 1 Inisiasi Project
 ### 1.1 Membuat Project Expo
 
