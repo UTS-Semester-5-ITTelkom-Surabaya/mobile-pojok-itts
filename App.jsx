@@ -9,15 +9,29 @@ import ArticlesScreen from './screens/ArticlesScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import ArticleDetailScreen from './screens/ArticleDetailScreen';
 
+import BackButton from './components/BackButton';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const renderBackButton = () => <BackButton />;
+
+  const screenOptions = {
+    headerTitleAlign: 'center',
+    headerStyle: { backgroundColor: '#d4af37' },
+    headerTitleStyle: { fontFamily: 'Charter-Bold', color: 'white' },
+    headerLeft: renderBackButton,
+  };
+
   return (
     <GluestackUIProvider config={config}>
       {/* eslint-disable-next-line react/style-prop-object */}
       <StatusBar style="dark" />
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Navigator
+          initialRouteName="Welcome"
+          screenOptions={screenOptions}
+        >
           <Stack.Screen
             name="Welcome"
             component={WelcomeScreen}
@@ -28,7 +42,6 @@ export default function App() {
             component={ArticlesScreen}
             options={{
               title: 'Articles',
-              headerTitleStyle: { fontFamily: 'Charter-Bold' },
             }}
           />
           <Stack.Screen
@@ -36,7 +49,6 @@ export default function App() {
             component={ArticleDetailScreen}
             options={{
               title: 'Article Detail',
-              headerTitleStyle: { fontFamily: 'Charter-Bold' },
             }}
           />
         </Stack.Navigator>
