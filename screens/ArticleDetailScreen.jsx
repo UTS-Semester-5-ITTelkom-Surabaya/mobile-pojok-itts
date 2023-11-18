@@ -1,11 +1,9 @@
-/* eslint-disable object-curly-newline */
 import React from 'react';
 import { StyleSheet, Linking } from 'react-native';
 import { Text, Image, Box, ScrollView } from '@gluestack-ui/themed';
 import { useRoute } from '@react-navigation/native';
 
-import ActionButton from '../components/ActionButton';
-import SizedBox from '../components/SizedBox';
+import { ActionButton, SizedBox } from '../components';
 
 const styles = StyleSheet.create({
   screenContainer: {
@@ -41,11 +39,20 @@ export default function ArticleDetailScreen() {
 
   const { article } = route.params;
 
+  function handleOpenUrl() {
+    Linking.canOpenURL(article.link).then((supported) => {
+      if (!supported) {
+        return;
+      }
+
+      Linking.openURL(article.link);
+    });
+  }
+
   return (
     <ScrollView style={styles.screenContainer}>
       <Box style={{ paddingVertical: 24 }}>
         <Text style={styles.article.title}>{article.title}</Text>
-        {/* <Box style={{ height: 24 }} /> */}
         <SizedBox height={24} />
         <Image
           source={article.image}
@@ -58,18 +65,7 @@ export default function ArticleDetailScreen() {
         <SizedBox height={12} />
         <Text style={styles.article.content}>{article.content}</Text>
         <SizedBox height={24} />
-        <ActionButton
-          onPress={() => {
-            Linking.canOpenURL(article.link).then((supported) => {
-              if (!supported) {
-                return;
-              }
-
-              Linking.openURL(article.link);
-            });
-          }}
-          text="READ MORE"
-        />
+        <ActionButton onPress={() => handleOpenUrl()} text="READ MORE" />
       </Box>
     </ScrollView>
   );
