@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-newline */
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, SafeAreaView } from 'react-native';
@@ -6,9 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Image, Box, Text } from '@gluestack-ui/themed';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import SocialMediaTile from '../components/SocialMediaTile';
-import ActionButton from '../components/ActionButton';
-import SizedBox from '../components/SizedBox';
+import { SocialMediaTile, ActionButton, SizedBox } from '../components';
 
 const styles = StyleSheet.create({
   screenContainer: {
