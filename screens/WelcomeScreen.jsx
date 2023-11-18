@@ -10,6 +10,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import SocialMediaTile from '../components/SocialMediaTile';
 import ActionButton from '../components/ActionButton';
+import SizedBox from '../components/SizedBox';
 
 const CharterRegular = require('../assets/fonts/Charter-Regular.otf');
 const CharterBold = require('../assets/fonts/Charter-Bold.otf');
@@ -40,7 +41,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Charter-Bold',
         fontSize: 24,
         lineHeight: 24,
-        marginBottom: 8,
       },
       subtitle: {
         fontSize: 14,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'space-between',
   },
-  absoluteImage: {
+  logo: {
     position: 'absolute',
     width: '40%',
     top: 48,
@@ -92,9 +92,7 @@ export default function WelcomeScreen() {
       }}
       onLayout={onLayoutRootView}
     >
-      {/* eslint-disable-next-line react/style-prop-object */}
       <StatusBar translucent backgroundColor="transparent" />
-
       <Box style={styles.profileHeader}>
         <Image
           source={{
@@ -106,6 +104,7 @@ export default function WelcomeScreen() {
         />
         <Box style={styles.profileHeader.content}>
           <Text style={styles.profileHeader.content.title}>Ahmad Faisal</Text>
+          <SizedBox height={8} />
           <Text style={styles.profileHeader.content.subtitle}>
             1203210101 &bull; Informatika &bull; 2021
           </Text>
@@ -131,8 +130,8 @@ export default function WelcomeScreen() {
         source={{
           uri: 'https://if.ittelkom-sby.ac.id/wp-content/uploads/2021/05/LOGO_1_IF-removebg-preview.png',
         }}
-        style={styles.absoluteImage}
-        alt="Absolute Image"
+        style={styles.logo}
+        alt="Informatics Logo"
       />
     </SafeAreaView>
   );
