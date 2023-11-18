@@ -1,21 +1,14 @@
 /* eslint-disable object-curly-newline */
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { useFonts } from 'expo-font';
 import { Image, Box, Text } from '@gluestack-ui/themed';
-import * as SplashScreen from 'expo-splash-screen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import SocialMediaTile from '../components/SocialMediaTile';
 import ActionButton from '../components/ActionButton';
 import SizedBox from '../components/SizedBox';
-
-const CharterRegular = require('../assets/fonts/Charter-Regular.otf');
-const CharterBold = require('../assets/fonts/Charter-Bold.otf');
-
-SplashScreen.preventAutoHideAsync();
 
 const styles = StyleSheet.create({
   screenContainer: {
@@ -68,21 +61,6 @@ export default function WelcomeScreen() {
 
   const insets = useSafeAreaInsets();
 
-  const [fontsLoaded] = useFonts({
-    'Charter-Regular': CharterRegular,
-    'Charter-Bold': CharterBold,
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
   return (
     <SafeAreaView
       style={{
@@ -90,7 +68,6 @@ export default function WelcomeScreen() {
         paddingTop: insets.top,
         paddingBottom: insets.bottom,
       }}
-      onLayout={onLayoutRootView}
     >
       <StatusBar translucent backgroundColor="transparent" />
       <Box style={styles.profileHeader}>

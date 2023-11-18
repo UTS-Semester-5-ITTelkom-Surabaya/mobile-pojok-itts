@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as SplashScreen from 'expo-splash-screen';
 
 import ArticlesScreen from './screens/ArticlesScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -13,7 +15,29 @@ import BackButton from './components/BackButton';
 
 const Stack = createNativeStackNavigator();
 
+const CharterRegular = require('./assets/fonts/Charter-Regular.otf');
+const CharterBold = require('./assets/fonts/Charter-Bold.otf');
+
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Charter-Regular': CharterRegular,
+    'Charter-Bold': CharterBold,
+  });
+
+  useEffect(() => {
+    async function prepare() {
+      await SplashScreen.preventAutoHideAsync();
+    }
+
+    prepare();
+  }, []);
+
+  if (!fontsLoaded) {
+    return undefined;
+  }
+
+  SplashScreen.hideAsync();
+
   const renderBackButton = () => <BackButton />;
 
   const screenOptions = {
