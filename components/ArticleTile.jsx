@@ -4,37 +4,37 @@ import { ActivityIndicator, StyleSheet } from 'react-native';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import SizedBox from './SizedBox';
+
 const styles = StyleSheet.create({
-  articleTile: {
+  article: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 6,
     paddingHorizontal: 24,
-  },
-  articleTileDesc: {
-    flex: 10,
-    height: 96,
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    marginRight: 24,
-  },
-  articleTileImage: {
-    flex: 5,
-  },
-  articleTitle: {
-    fontFamily: 'Charter-Bold',
-    fontSize: 18,
-    lineHeight: 20,
-  },
-  articleDate: {
-    fontFamily: 'Charter-Regular',
-    fontSize: 14,
-    lineHeight: 16,
-  },
-  articleImage: {
-    height: 96,
-    width: 'auto',
+    desc: {
+      flex: 10,
+      height: 96,
+      flexDirection: 'column',
+      justifyContent: 'space-evenly',
+      title: {
+        fontFamily: 'Charter-Bold',
+        fontSize: 18,
+        lineHeight: 20,
+      },
+      date: {
+        fontFamily: 'Charter-Regular',
+        fontSize: 14,
+        lineHeight: 16,
+      },
+    },
+    image: {
+      flex: 5,
+      height: 96,
+      width: 'auto',
+      borderRadius: 8,
+    },
   },
 });
 
@@ -45,31 +45,29 @@ function getActivityIndicator() {
 function ArticleTile({ article, onPress }) {
   return (
     <Pressable
-      style={styles.articleTile}
+      style={styles.article}
       onPress={onPress}
       android_ripple={{ color: '#d1cfcf' }}
       unstable_pressDelay={1000}
     >
-      <Box style={styles.articleTileDesc}>
+      <Box style={styles.article.desc}>
         <Text
-          style={styles.articleTitle}
+          style={styles.article.desc.title}
           numberOfLines={2}
           ellipsizeMode="tail"
         >
           {article.title}
         </Text>
-        <Text style={styles.articleDate}>{article.date}</Text>
+        <Text style={styles.article.desc.date}>{article.date}</Text>
       </Box>
-      <Box style={styles.articleTileImage}>
-        <Image
-          style={styles.articleImage}
-          source={article.image}
-          loadingBuilder={getActivityIndicator}
-          alt={article.title}
-          rounded={12}
-          role="article"
-        />
-      </Box>
+      <SizedBox width={24} />
+      <Image
+        style={styles.article.image}
+        source={article.image}
+        loadingBuilder={getActivityIndicator}
+        alt={article.title}
+        role="article"
+      />
     </Pressable>
   );
 }
